@@ -140,7 +140,7 @@ const getConversaByPalavraChave = function(numeroProfile, numeroContato, palavra
 // console.log(getContatosByUser('11987876567'))
 // console.log(getConversaByUser('11987876567'))
 // console.log(getConversaByUserEContato('11987876567', '26999999963'))
-console.log(JSON.stringify(getConversaByPalavraChave('11987876567', '26999999963', 'Leonid'), null, 2) )
+// console.log(JSON.stringify(getConversaByPalavraChave('11987876567', '26999999963', 'Leonid'), null, 2) )
 
 module.exports ={
     getAllDados,
