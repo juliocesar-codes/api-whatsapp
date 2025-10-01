@@ -94,7 +94,7 @@ const getConversaByUserEContato = function(numeroProfile, numeroContato) {
             message.usuario = item.account
             item.contacts.forEach(msg => {
                 if (msg.number === numeroContato) {
-                    message.mensagens.push(...msg.messages)
+                    message.mensagens.concat(msg.messages || [])
                     message.contato = msg.name
                 }
             })
