@@ -94,7 +94,7 @@ const getConversaByUserEContato = function(numeroProfile, numeroContato) {
             message.usuario = item.account
             item.contacts.forEach(Event => {
                 if (Event.number === numeroContato) {
-                    message.mensagens.push(...Event.messages)
+                    message.mensagens.push(Event.messages)
                     message.contato = Event.name
                 }
             })
@@ -139,9 +139,9 @@ const getConversaByPalavraChave = function(numeroProfile, numeroContato, palavra
 // console.log(getDadosConta('11987876567'))
 // console.log(getContatosByUser('11987876567'))
 // console.log(getConversaByUser('11987876567'))
-// console.log(getConversaByUserEContato('11987876567', '26999999963'))
-// console.log(JSON.stringify(getConversaByPalavraChave('11987876567', '26999999963', 'Leonid'), null, 2) )
-// teste
+console.log(getConversaByUserEContato('11987876567', '26999999963'))
+    // console.log(JSON.stringify(getConversaByPalavraChave('11987876567', '26999999963', 'Leonid'), null, 2) )
+    // teste
 
 module.exports = {
     getAllDados,
