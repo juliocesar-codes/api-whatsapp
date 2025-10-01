@@ -92,10 +92,10 @@ const getConversaByUserEContato = function(numeroProfile, numeroContato) {
     dados.contatos['whats-users'].forEach(item => {
         if (item.number === numeroProfile) {
             message.usuario = item.account
-            item.contacts.forEach(Event => {
-                if (Event.number === numeroContato) {
-                    message.mensagens.push(Event.messages)
-                    message.contato = Event.name
+            item.contacts.forEach(msg => {
+                if (msg.number === numeroContato) {
+                    message.mensagens.push(...msg.messages)
+                    message.contato = msg.name
                 }
             })
         }
