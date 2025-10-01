@@ -3,14 +3,14 @@
  * Data: 22/09/2025
  * Autor: Julio Cesar Santana Alves
  * Versão: 1.0
-*******************************************************************************************/
+ *******************************************************************************************/
 
 // Importe de arquivo estados_cidades
 const dados = require('./contatos.js')
 const MESSAGE_ERROR = { status: false, statuscode: 500, development: 'Julio Cesar' }
 
 // Retorna a lista de todos os dados
-const getAllDados = function () {
+const getAllDados = function() {
     let message = { status: true, statuscode: 200, development: 'Julio Cesar' }
 
     message.dados = dados.contatos['whats-users']
@@ -22,7 +22,7 @@ const getAllDados = function () {
     }
 }
 
-const getDadosConta = function (numero) {
+const getDadosConta = function(numero) {
     let message = { status: true, statuscode: 200, development: 'Julio Cesar', nick: '', foto: '', numero: '', corFundo: '', dataCriacao: '', dataTermino: '' }
 
     dados.contatos['whats-users'].forEach(item => {
@@ -42,7 +42,7 @@ const getDadosConta = function (numero) {
     }
 }
 
-const getContatosByUser = function (number) {
+const getContatosByUser = function(number) {
     let message = { status: true, statuscode: 200, development: 'Julio Cesar', usuario: '', contatos: [] }
 
     dados.contatos['whats-users'].forEach(item => {
@@ -65,7 +65,7 @@ const getContatosByUser = function (number) {
     }
 }
 
-const getConversaByUser = function (number) {
+const getConversaByUser = function(number) {
     let message = { status: true, statuscode: 200, development: 'Julio Cesar', usuario: '', mensagens: [] }
 
     dados.contatos['whats-users'].forEach(item => {
@@ -73,7 +73,7 @@ const getConversaByUser = function (number) {
             message.usuario = item.account
             item.contacts.forEach(contato => {
 
-                message.mensagens.push(contato.messages)
+                message.mensagens.push(...contato.messages)
 
             })
         }
@@ -86,13 +86,13 @@ const getConversaByUser = function (number) {
     }
 }
 
-const getConversaByUserEContato = function (numeroProfile, numeroContato) {
-    let message = { status: true, statuscode: 200, development: 'Julio Cesar', usuario: '',  contato:'', mensagens:[] }
+const getConversaByUserEContato = function(numeroProfile, numeroContato) {
+    let message = { status: true, statuscode: 200, development: 'Julio Cesar', usuario: '', contato: '', mensagens: [] }
 
-    dados.contatos['whats-users'].forEach(item =>{
-        if(item.number === numeroProfile){
+    dados.contatos['whats-users'].forEach(item => {
+        if (item.number === numeroProfile) {
             message.usuario = item.account
-            item.contacts.forEach(Event =>{
+            item.contacts.forEach(Event => {
                 if (Event.number === numeroContato) {
                     message.mensagens.push(Event.messages)
                     message.contato = Event.name
@@ -101,36 +101,36 @@ const getConversaByUserEContato = function (numeroProfile, numeroContato) {
         }
     })
 
-    if(message.usuario.length > 0){
+    if (message.usuario.length > 0) {
         return message
-    } else{
+    } else {
         return MESSAGE_ERROR
     }
 }
 
-const getConversaByPalavraChave = function(numeroProfile, numeroContato, palavra){
-    let message = { status: true, statuscode: 200, development: 'Julio Cesar', usuario: '',  contato:'', mensagens:[] }
+const getConversaByPalavraChave = function(numeroProfile, numeroContato, palavra) {
+    let message = { status: true, statuscode: 200, development: 'Julio Cesar', usuario: '', contato: '', mensagens: [] }
     const palavraDeBusca = palavra
 
-    dados.contatos['whats-users'].forEach(item =>{
-        if(item.number === numeroProfile){
+    dados.contatos['whats-users'].forEach(item => {
+        if (item.number === numeroProfile) {
             message.usuario = item.account
-            item.contacts.forEach(Event =>{
+            item.contacts.forEach(Event => {
                 if (Event.number === numeroContato) {
                     message.contato = Event.name
-                    const conversaFiltrada = Event.messages.filter(palavra =>{
-                       return palavra.content.toLowerCase().includes(palavraDeBusca.toLowerCase())
+                    const conversaFiltrada = Event.messages.filter(palavra => {
+                        return palavra.content.toLowerCase().includes(palavraDeBusca.toLowerCase())
                     })
                     message.mensagens.push(conversaFiltrada)
                 }
             })
         }
     })
-    if(message.usuario.length > 0){
-        
+    if (message.usuario.length > 0) {
+
         return message
-        
-    }else{
+
+    } else {
         return MESSAGE_ERROR
     }
 }
@@ -143,7 +143,7 @@ const getConversaByPalavraChave = function(numeroProfile, numeroContato, palavra
 // console.log(JSON.stringify(getConversaByPalavraChave('11987876567', '26999999963', 'Leonid'), null, 2) )
 // teste
 
-module.exports ={
+module.exports = {
     getAllDados,
     getDadosConta,
     getContatosByUser,
